@@ -1,7 +1,10 @@
 import express from "express";
 import { connectToMongoDB } from "./config/mongodb.js";
+import userRouter from "./src/feature/user/user.route.js";
 
 const server = express();
+
+server.use("/user",userRouter);
 
 server.get("/",(req,res) => {
     res.send("Welcome to Express");
