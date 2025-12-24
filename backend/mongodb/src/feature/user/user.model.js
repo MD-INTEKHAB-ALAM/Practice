@@ -1,15 +1,13 @@
 
 export default class UserModel {
 
-    constructor(name,email,password,confirmPassword) {
+    constructor(name,email,password) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.confirmPassword = confirmPassword;
     }
 
-    static signIn(name,email,password,confirmPassword) {
-        const user = new UserModel(name,email,password,confirmPassword);
-        return user;
+    static signUp(name,email,password) {
+        return new UserModel(name,email,password);
     }
 }
