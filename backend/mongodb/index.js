@@ -4,6 +4,7 @@ import userRouter from "./src/feature/user/user.route.js";
 
 const server = express();
 
+server.use(express.json());
 server.use("/user",userRouter);
 
 server.get("/",(req,res) => {

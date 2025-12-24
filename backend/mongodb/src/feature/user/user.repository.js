@@ -1,16 +1,21 @@
-import { getDB } from "../../../config/mongodb";
+import { getDB } from "../../../config/mongodb.js";
 
 export default class UserRepository {
 
-    async singIn(user) {
+    async singIn(email,password) {
         const db = getDB();
-        const collection = db.collection;
-        // return await collection.insertOne(user);
+        const collection = db.collection("users");
+        try {
+            return await collection.find({email,password});
+        }
+        catch(err) {
+            throw new Error("Something went wrong while signin in db");
+        }
     }
 
     async signUp(user) {
         const db = getDB();
-        const collection = db.collection;
+        const collection = db.collection("users");
         try {
             return await collection.insertOne(user);
         }
